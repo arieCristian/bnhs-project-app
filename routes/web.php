@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminTicketController;
+use App\Http\Controllers\Admin\TicketTransactionController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,5 @@ Route::get('/dashboard',[LoginController::class,'dashboard'])->name('login');
 /* ADMIN ROUTE */
 Route::middleware('admin')->prefix('admin')->group(function () {
    Route::resource('/ticket',AdminTicketController::class);
+   Route::get('/ticket-transaction',[TicketTransactionController::class,'index']);
 });

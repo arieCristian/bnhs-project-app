@@ -4,8 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Http\Livewire\TicketTransaction;
 use App\Models\Role;
 use App\Models\Ticket;
+use App\Models\TicketTransaction as ModelsTicketTransaction;
+use App\Models\TicketTransactionDetail;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -66,7 +69,7 @@ class DatabaseSeeder extends Seeder
 
         Ticket::create([
             'name' => 'International Tourist Ticket' ,
-            'price' => 75000
+            'price' => 100000
         ]);
 
         Ticket::create([
@@ -76,7 +79,29 @@ class DatabaseSeeder extends Seeder
 
         Ticket::create([
             'name' => 'Local Tourist Ticket' ,
-            'price' => 40000
+            'price' => 50000
+        ]);
+
+        ModelsTicketTransaction::create([
+            'user_id' => 4,
+            'customer' => 'Ni Kadek Suari',
+            'total' => 350000
+        ]);
+
+        TicketTransactionDetail::create([
+            'ticket_id' => 1 ,
+            'ticket_transaction_id' => 1 ,
+            'qty' => 3 ,
+            'price' => 100000,
+            'total' => 300000
+        ]);
+
+        TicketTransactionDetail::create([
+            'ticket_id' => 2 ,
+            'ticket_transaction_id' => 1 ,
+            'qty' => 1 ,
+            'price' => 50000,
+            'total' => 50000
         ]);
 
     }

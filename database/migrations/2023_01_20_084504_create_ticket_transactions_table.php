@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('ticket_transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id');
-            $table->string('username')->unique();
-            $table->string('name');
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignId('user_id');
+            $table->string('customer')->default('Tanpa Nama');
+            $table->bigInteger('total');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('ticket_transactions');
     }
 };
