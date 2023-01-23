@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'kasir tiket'
         ]);
         Role::create([
-            'name' => 'kasir loket'
+            'name' => 'kasir loker'
         ]);
         User::create([
             'name' => 'Wayan Tinggal',

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('ticket_transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('customer')->default('Tanpa Nama');
+            $table->string('customer')->default('Tanpa Nama')->nullable();
             $table->bigInteger('total');
             $table->timestamps();
         });

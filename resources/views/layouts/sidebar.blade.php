@@ -43,7 +43,7 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-item {{ Request::is('dashboard*')? 'active' : '' }}">
-                    <a href="index.html" class="sidebar-link">
+                    <a href="{{ url('dashboard') }}" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -64,7 +64,21 @@
                     </ul>
                 </li>
                 @endcan
-                <li class="sidebar-title">Forms &amp; Tables</li>
+
+                @can('ticket')
+                <li class="sidebar-item {{ Request::is('ticket/transaction')? 'active' : '' }}">
+                    <a href="{{ url('ticket/transaction') }}" class="sidebar-link">
+                        <i class="bi bi-cash-coin"></i>
+                        <span>Transaksi Tiket</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ Request::is('ticket/transaction-history')? 'active' : '' }}">
+                    <a href="{{ url('ticket/transaction-history') }}" class="sidebar-link">
+                        <i class="bi bi-clock-history"></i>
+                        <span>Riwayat Transaksi</span>
+                    </a>
+                </li>
+                @endcan
             </ul>
         </div>
     </div>

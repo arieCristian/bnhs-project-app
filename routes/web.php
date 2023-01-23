@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminTicketController;
 use App\Http\Controllers\Admin\TicketTransactionController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Ticket\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,10 @@ Route::get('/dashboard',[LoginController::class,'dashboard'])->name('login');
 Route::middleware('admin')->prefix('admin')->group(function () {
    Route::resource('/ticket',AdminTicketController::class);
    Route::get('/ticket-transaction',[TicketTransactionController::class,'index']);
+});
+
+/* TICKET STAF ROUTE */
+Route::middleware('ticket')->prefix('ticket')->group(function () {
+   Route::get('/transaction',[TransactionController::class,'transaction']);
+   Route::get('/transaction-history',[TransactionController::class,'transactionHistory']);
 });

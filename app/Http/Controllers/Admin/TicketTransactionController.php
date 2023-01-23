@@ -11,9 +11,6 @@ use Illuminate\Http\Request;
 class TicketTransactionController extends Controller
 {
     public function index(){
-        $tr = TicketTransaction::first();
-        $td = TicketTransactionDetail::first();
-        $role = Role::first();
-        dd($td->ticket);
+        return view('ticket.admin-transaction');
     }
 }

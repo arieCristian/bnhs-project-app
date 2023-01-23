@@ -40,6 +40,12 @@ class LoginController extends Controller
             return view('dashboard.owner');
         }elseif(auth()->user()->role_id == Role::IS_ADMIN){
             return view('dashboard.admin');
+        }elseif(auth()->user()->role_id == Role::IS_BAR){
+            return view('dashboard.bar');
+        }elseif(auth()->user()->role_id == Role::IS_TICKET){
+            return view('dashboard.ticket');
+        }elseif(auth()->user()->role_id == Role::IS_LOCKER){
+            return view('dashboard.locker');
         }
     }
 

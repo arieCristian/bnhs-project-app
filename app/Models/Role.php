@@ -15,7 +15,7 @@ class Role extends Model
     public const IS_ADMIN = 2 ;
     public const IS_BAR = 3 ;
     public const IS_TICKET = 4 ;
-    public const IS_LOKET = 5 ;
+    public const IS_LOCKER = 5 ;
 
     public function user()
     {
