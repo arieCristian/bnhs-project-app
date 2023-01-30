@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class TransactionPage extends Component
 {
-    public $total,$paid,$customer;
+    public $total,$paid;
     public $transactions = [];
     public function mount(){
         $tickets = Ticket::all();
@@ -43,22 +43,23 @@ class TransactionPage extends Component
     public function resetField(){
         $this->paid = null ;
         $this->total = 0 ;
-        $this->customer = null;
         foreach ($this->transactions as $index => $tr){
             $this->transactions[$index]['qty'] = 0;
         }
     }
 
     public function executeTransaction(){
+        foreach($this->transactions as $index => $tr){
+            $this->transactions[$index]['qty'] = intval($tr['qty']);
+        }
         if($this->total  != 0){
             $trId =  TicketTransaction::create([
-                 'customer' => $this->customer,
-                 'total' => $this->total,
-                 'user_id' => auth()->user()->id
+                'total' => $this->total,
+                'user_id' => auth()->user()->id
             ]);
 
             foreach($this->transactions as $tr){
-                if($tr['qty'] != 0){
+                if($tr['qty'] > 0 ){
                     TicketTransactionDetail::create([
                         'ticket_id' => $tr['id'],
                         'ticket_transaction_id' => $trId->id,

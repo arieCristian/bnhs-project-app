@@ -20,11 +20,11 @@
                 <div class="modal-footer">
                     <button wire:click="closeModal" type="button" class="btn" data-bs-dismiss="modal">
                         <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Close</span>
+                        <span class="d-none d-sm-block">Batal</span>
                     </button>
                     <button type="submit" class="btn btn-primary ml-1">
                         <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Tambah Tiket</span>
+                        <span class="d-none d-sm-block">Lakukan Transaksi</span>
                     </button>
                 </div>
             </form>
@@ -41,10 +41,10 @@
                 </div>
                 <div class="card-body">
                     <form wire:submit.prevent="addTransaction">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="customer">Nama Tamu</label>
                             <input wire:model="customer" type="text" class="form-control">
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-8">
                                 <label for="">Jenis Tiket</label>

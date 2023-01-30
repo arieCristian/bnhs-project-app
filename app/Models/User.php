@@ -40,4 +40,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function ticketTransactions(){
+        return $this->hasMany(TicketTransaction::class);
+    }
+    public function cencelledTicket(){
+        return $this->hasMany(CencelledTicketTransaction::class);
+    }
 }

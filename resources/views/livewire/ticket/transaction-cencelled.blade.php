@@ -1,4 +1,5 @@
 <div>
+    {{-- MODAL --}}
     <div wire:ignore.self class="modal fade text-left" id="info" tabindex="-1" role="dialog" aria-labelledby="infoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             @if ($transactionDetails != null)
@@ -49,9 +50,10 @@
     </div>
     </div>
 
+    {{-- END MODAL --}}
 
 
-    {{-- CONTENT --}}
+
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between">
@@ -67,9 +69,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Tanggal</th>
-                        @can('admin')
                         <th>Oleh</th>
-                        @endcan
                         <th>Total Pembelian</th>
                         <th>Action</th>
                     </tr>
@@ -80,21 +80,14 @@
                     <tr>
                         <td>{{ $tr->id }}</td>
                         <td>{{ $tr->created_at->format('d M Y') }}</td>
-                        @can('admin')
                         <td>{{ $tr->user->name }}</td>
-                        @endcan
                         <td>{{ priceFormat($tr->total) }}</td>
                         <td>
                             <button wire:click="info({{ $tr->id }})" type="button" class="btn btn-info block"
                                 data-bs-toggle="modal" data-bs-target="#info"><i class="bi bi-info-lg"></i>
                             </button>
-{{--                             
-                            <a href="transaction/{{ $tr->id }}/edit" class="btn btn-warning">Edit</a> --}}
-                            @can('ticket')
-                            <button wire:click="cencel({{ $tr->id }})" type="button"  class="btn btn-danger block">
-                                <i class="bi bi-trash3"></i>
-                            </button>
-                            @endcan
+                            <button wire:click="restore({{ $tr->id }})" class="btn btn-success" type="button"><i class="bi bi-arrow-counterclockwise"></i></button>
+                            <button wire:click="delete({{ $tr->id }})" class="btn btn-danger" type="button"><i class="bi bi-trash3"></i></button>
                         </td>
                     </tr>
                     @endforeach

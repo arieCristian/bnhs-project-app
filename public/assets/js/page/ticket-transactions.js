@@ -21,3 +21,13 @@ window.addEventListener('success-add', event => {
         text: "Total Kembalian " + event.detail.cashback,
     })
 })
+
+
+window.addEventListener('success-edited', event => {
+    Swal.fire({
+        icon: "success",
+        title: "Berhasil Memperbarui Transaksi"
+    })
+})
+
+

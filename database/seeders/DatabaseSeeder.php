@@ -82,27 +82,5 @@ class DatabaseSeeder extends Seeder
             'price' => 50000
         ]);
 
-        ModelsTicketTransaction::create([
-            'user_id' => 4,
-            'customer' => 'Ni Kadek Suari',
-            'total' => 350000
-        ]);
-
-        TicketTransactionDetail::create([
-            'ticket_id' => 1 ,
-            'ticket_transaction_id' => 1 ,
-            'qty' => 3 ,
-            'price' => 100000,
-            'total' => 300000
-        ]);
-
-        TicketTransactionDetail::create([
-            'ticket_id' => 2 ,
-            'ticket_transaction_id' => 1 ,
-            'qty' => 1 ,
-            'price' => 50000,
-            'total' => 50000
-        ]);
-
     }
 }

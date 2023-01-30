@@ -26,12 +26,14 @@ Route::get('/dashboard',[LoginController::class,'dashboard'])->name('login');
 
 /* ADMIN ROUTE */
 Route::middleware('admin')->prefix('admin')->group(function () {
-   Route::resource('/ticket',AdminTicketController::class);
-   Route::get('/ticket-transaction',[TicketTransactionController::class,'index']);
+   Route::get('/ticket',[AdminTicketController::class,'index']);
+   Route::get('/ticket/transactions-history',[TicketTransactionController::class,'transactionHIstory']);
+   Route::get('/ticket/cencelled-ticket-transactios',[TicketTransactionController::class,'cencelled']);
 });
 
 /* TICKET STAF ROUTE */
 Route::middleware('ticket')->prefix('ticket')->group(function () {
-   Route::get('/transaction',[TransactionController::class,'transaction']);
-   Route::get('/transaction-history',[TransactionController::class,'transactionHistory']);
+   Route::resource('/transaction',TransactionController::class)->except(['show','store','destroy']);
+   // Route::get('/transaction',[TransactionController::class,'transaction']);
+   // Route::get('/transaction-history',[TransactionController::class,'transactionHistory']);
 });

@@ -58,22 +58,25 @@
                         <li class="submenu-item {{ Request::is('admin/ticket')? 'active' : '' }}">
                             <a href="{{ url('admin/ticket') }}">Ticket</a>
                         </li>
-                        <li class="submenu-item {{ Request::is('admin/ticket/transactions/*')? 'active' : '' }}">
-                            <a href="{{ url('admin/ticket/transactions') }}">Transaksi Tiket</a>
+                        <li class="submenu-item {{ Request::is('admin/ticket/transactions-history')? 'active' : '' }}">
+                            <a href="{{ url('admin/ticket/transactions-history') }}">Transaksi Tiket</a>
+                        </li>
+                        <li class="submenu-item {{ Request::is('admin/ticket/cencelled-ticket-transactios')? 'active' : '' }}">
+                            <a href="{{ url('admin/ticket/cencelled-ticket-transactios') }}">Pembatalan Transaksi Tiket</a>
                         </li>
                     </ul>
                 </li>
                 @endcan
 
                 @can('ticket')
-                <li class="sidebar-item {{ Request::is('ticket/transaction')? 'active' : '' }}">
-                    <a href="{{ url('ticket/transaction') }}" class="sidebar-link">
+                <li class="sidebar-item {{ Request::is('ticket/transaction/create')? 'active' : '' }}">
+                    <a href="{{ url('ticket/transaction/create') }}" class="sidebar-link">
                         <i class="bi bi-cash-coin"></i>
                         <span>Transaksi Tiket</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ Request::is('ticket/transaction-history')? 'active' : '' }}">
-                    <a href="{{ url('ticket/transaction-history') }}" class="sidebar-link">
+                <li class="sidebar-item {{ Request::is('ticket/transaction')? 'active' : '' }}">
+                    <a href="{{ url('ticket/transaction') }}" class="sidebar-link">
                         <i class="bi bi-clock-history"></i>
                         <span>Riwayat Transaksi</span>
                     </a>
