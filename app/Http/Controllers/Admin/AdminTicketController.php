@@ -10,6 +10,6 @@ class AdminTicketController extends Controller
 
     public function index()
     {
-        return view('ticket.index');
+        return view('ticket.admin-ticket-data');
     }
 }

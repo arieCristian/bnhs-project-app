@@ -8,16 +8,24 @@ use App\Models\TicketTransaction;
 use App\Models\TicketTransactionDetail;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TransactionHistory extends Component
 {
+    use WithPagination ;
+    protected $paginationTheme = 'bootstrap';
     public $transactionDetails ;
     public $idTr ,$idDeleted ;
+    public $from,$to,$orderBy,$asc ;
     protected $listeners = ['cencelled','uncencelled'];
 
     public function mount(){
         $this->transactionDetails = TicketTransaction::with('detail')->first();
         $this->idTr = 0;
+        $this->orderBy = 'created_at';
+        $this->from = date('Y-m-d');
+        $this->to = date('Y-m-d');
+        $this->asc = 'desc';
     }
 
     public function info($id){
@@ -60,10 +68,15 @@ class TransactionHistory extends Component
     public function render()
     {
         if(auth()->user()->role_id == Role::IS_TICKET){
-            $transactions = TicketTransaction::where('user_id', auth()->user()->id)->get();
+            $transactions = TicketTransaction::where('user_id', auth()->user()->id);
         }else{
-            $transactions = TicketTransaction::with('user')->get();
+            $transactions = TicketTransaction::with('user');
         }
+        $dateTo = date('Y-m-d', strtotime( $this->to . " +1 days"));
+        $transactions = $transactions
+        ->whereBetween('created_at', [$this->from, $dateTo])
+        ->orderBy($this->orderBy, $this->asc)
+        ->paginate(10);
         return view('livewire.ticket.transaction-history',compact('transactions'));
     }
 }

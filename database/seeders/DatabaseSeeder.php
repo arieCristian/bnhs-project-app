@@ -49,19 +49,19 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin')
         ]);
         User::create([
-            'name' => 'Arie Cristian',
+            'name' => 'Komang Petugas Bar',
             'username' => 'bar',
             'role_id' => 3,
             'password' => bcrypt('bar')
         ]);
         User::create([
-            'name' => 'Arie Cristian',
+            'name' => 'Putu Tugas Tiket',
             'username' => 'tiket',
             'role_id' => 4,
             'password' => bcrypt('tiket')
         ]);
         User::create([
-            'name' => 'Arie Cristian',
+            'name' => 'Ni Wayan Loket',
             'username' => 'loket',
             'role_id' => 5,
             'password' => bcrypt('loket')

@@ -27,6 +27,10 @@ class TicketData extends Component
     public function closeModal(){
         $this->resetFields();
     }
+
+    // public function closeUpdateModal(){
+    //     $this->resetFields();
+    // }
  
     public function addTicket(){
         $validatedData = $this->validate();

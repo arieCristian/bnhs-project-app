@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Mazer Admin Dashboard</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/pages/auth.css') }}" />
+    <title>Login - BNHS APP</title>
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
 <body style="background-color: #F2F7FF!important;">

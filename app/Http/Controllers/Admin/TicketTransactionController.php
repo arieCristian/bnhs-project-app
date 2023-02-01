@@ -21,4 +21,8 @@ class TicketTransactionController extends Controller
     public function cencelled(){
         return view('ticket.admin-cencelled-transaction');
     }
+
+    public function details(){
+        return view('ticket.admin-transaction-detail');
+    }
 }

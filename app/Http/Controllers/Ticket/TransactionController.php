@@ -21,4 +21,8 @@ class TransactionController extends Controller
         return view('ticket.staf-transaction-edit',compact('transaction'));
     }
 
+    public function details(){
+        return view('ticket.admin-transaction-detail');
+    }
+
 }

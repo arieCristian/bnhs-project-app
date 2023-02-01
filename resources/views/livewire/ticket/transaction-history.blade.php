@@ -1,15 +1,16 @@
 <div>
-    <div wire:ignore.self class="modal fade text-left" id="info" tabindex="-1" role="dialog" aria-labelledby="infoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            @if ($transactionDetails != null)
+    {{-- MODAL --}}
+    <div wire:ignore.self class="modal fade" id="info" data-keyboard="false" tabindex="-1" aria-labelledby="infoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                        <h5 class="modal-title" id="infoLabel">Detail Transaksi</h5>
-                        
-                    <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
-                        <i data-feather="x"></i>
+                    <h5 class="modal-title text-primary" id="infoLabel">Detail Transaksi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                @if ($transactionDetails != null)
                 <div class="modal-body">
                     <p>Transaksi ID = {{ $idTr }}</p>
                     <div class="table-responsive">
@@ -32,75 +33,95 @@
                                 </tr>
 
                             </tbody>
-                            @endforeach 
+                            @endforeach
                         </table>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
                     <h3>{{ priceFormat($transactionDetails->total) }}</h3>
-                    <button  type="button" class="btn" data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Close</span>
-                    </button>
+                    <button wire:click="closeModal" type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Tutup</button>
                 </div>
-            </form>
+                @endif
+            </div>
         </div>
-        @endif
-    </div>
     </div>
 
 
 
     {{-- CONTENT --}}
     <div class="card">
-        <div class="card-header">
-            <div class="d-flex justify-content-between">
-                <button data-bs-toggle="modal" data-bs-target="#addTicket"
-                    class="btn icon icon-left btn-primary rounded-pill">
-                    <i class="bi bi-plus-lg"></i>
-                    Tambah Ticket</button>
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-lg-3 form-group">
+                    <label for="from">Tampilkan Dari :</label>
+                    <input wire:model="from" name="from" id="from" type="date" class="form-control">
+                </div>
+                <div class="col-lg-3 form-group">
+                    <label for="to">Sampai :</label>
+                    <input wire:model="to" name="to" id="to" type="date" class="form-control">
+                </div>
+                <div class="col-lg-3 form-group">
+                    <label for="orderBy">Urutkan Berdasarkan</label>
+                    <select wire:model="orderBy" class="form-control" id="orderBy">
+                        <option value="id" selected>ID</option>
+                        <option value="created_at">Tanggal</option>
+                        <option value="total">Total</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 form-group">
+                    <label for="asc">Urutkan Berdasarkan</label>
+                    <select wire:model="asc" class="form-control" id="asc">
+                        <option value="asc" selected>Terkecil</option>
+                        <option value="desc">Terbesar</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-hover" id="table1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tanggal</th>
-                        @can('admin')
-                        <th>Oleh</th>
-                        @endcan
-                        <th>Total Pembelian</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if ($transactions != null)
-                    @foreach ($transactions as $tr)
-                    <tr>
-                        <td>{{ $tr->id }}</td>
-                        <td>{{ $tr->created_at->format('d M Y') }}</td>
-                        @can('admin')
-                        <td>{{ $tr->user->name }}</td>
-                        @endcan
-                        <td>{{ priceFormat($tr->total) }}</td>
-                        <td>
-                            <button wire:click="info({{ $tr->id }})" type="button" class="btn btn-info block"
-                                data-bs-toggle="modal" data-bs-target="#info"><i class="bi bi-info-lg"></i>
-                            </button>
-{{--                             
-                            <a href="transaction/{{ $tr->id }}/edit" class="btn btn-warning">Edit</a> --}}
-                            @can('ticket')
-                            <button wire:click="cencel({{ $tr->id }})" type="button"  class="btn btn-danger block">
-                                <i class="bi bi-trash3"></i>
-                            </button>
+            <div class="table-responsive">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tanggal</th>
+                            @can('admin')
+                            <th>Kasir</th>
                             @endcan
-                        </td>
-                    </tr>
-                    @endforeach
-                    @endif
-                </tbody>
-            </table>
+                            <th>Total Pembelian</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if ($transactions != null)
+                        @foreach ($transactions as $tr)
+                        <tr>
+                            <td>{{ $tr->id }}</td>
+                            <td>{{ dateFormat($tr->created_at) }}</td>
+                            @can('admin')
+                            <td>{{ $tr->user->name }}</td>
+                            @endcan
+                            <td>{{ priceFormat($tr->total) }}</td>
+                            <td>
+                                <button wire:click="info({{ $tr->id }})" type="button" class="btn btn-info block"
+                                    data-toggle="modal" data-target="#info">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                {{--                             
+                                <a href="transaction/{{ $tr->id }}/edit" class="btn btn-warning">Edit</a> --}}
+                                @can('ticket')
+                                <button wire:click="cencel({{ $tr->id }})" type="button" class="btn btn-danger block">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                @endcan
+                            </td>
+                        </tr>
+                        @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+            {!! $transactions->links() !!}
         </div>
     </div>
 </div>

@@ -11,14 +11,11 @@ class TicketTransactionDetail extends Model
     use HasFactory,SoftDeletes;
     protected $guarded = ['id'];
 
-    public function transaction(){
-       return $this->belongsTo(TicketTransaction::class);
-    }
-    public function ticket(){
-       return $this->belongsTo(Ticket::class,'ticket_id','id')->withTrashed();
-    }
+   public function transaction(){
+      return $this->belongsTo(TicketTransaction::class);
+   }
+   public function ticket(){
+      return $this->belongsTo(Ticket::class,'ticket_id','id')->withTrashed();
+   }
 
-
-
-    
 }

@@ -18,8 +18,4 @@ class TicketTransaction extends Model
     public function user(){
         return $this->belongsTo(User::class)->withTrashed();
     }
-
-    public function cencel(){
-        return $this->hasMany(CencelledTicketTransaction::class);
-    }
 }

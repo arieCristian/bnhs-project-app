@@ -11,3 +11,7 @@ function priceToInt($price){
     $price = intval($price);
     return $price ;
 }
+
+function dateFormat($date){
+    return $date->timezone('Asia/Manila')->format('d-M-Y h:i A');
+}

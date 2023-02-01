@@ -3,7 +3,7 @@
         @include('livewire.ticket.ticket-data-modal')
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <button data-bs-toggle="modal" data-bs-target="#addTicket" class="btn icon icon-left btn-primary rounded-pill">
+                <button data-toggle="modal" data-target="#addTicket" class="btn icon icon-left btn-primary rounded-pill">
                 <i class="bi bi-plus-lg"></i>
                 Tambah Ticket</button>
             </div>
@@ -23,9 +23,9 @@
                         <td>{{ $ticket->name }}</td>
                         <td>{{ priceFormat($ticket->price) }}</td>
                         <td>
-                            <button wire:click="editTicket({{ $ticket->id }})" type="button" class="btn btn-warning block" data-bs-toggle="modal" data-bs-target="#updateTicket"><i class="bi bi-pencil-square"></i>
+                            <button wire:click="editTicket({{ $ticket->id }})" type="button" class="btn btn-warning block" data-toggle="modal" data-target="#updateTicket"><i class="fa fa-edit"></i>
                             </button>
-                            <button wire:click="deleteTicket({{ $ticket->id }})" type="button" class="btn btn-danger block"><i class="bi bi-trash3"></i>
+                            <button wire:click="deleteTicket({{ $ticket->id }})" type="button" class="btn btn-danger block"><i class="fa fa-trash"></i>
                             </button>
                         </td>
                     </tr>
