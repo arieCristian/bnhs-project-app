@@ -40,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($transactions != null)
+                        @if (count($transactions) > 0)
                         @foreach ($transactions as $tr)
                         <tr>
                             <td>{{ dateFormat($tr->created_at) }}</td>
@@ -50,6 +50,8 @@
                             <td>{{ priceFormat($tr->total) }}</td>
                         </tr>
                         @endforeach
+                        @else
+                            <th colspan="5" class="text-center">Belum ada transaksi</th>
                         @endif
                     </tbody>
                 </table>

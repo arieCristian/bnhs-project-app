@@ -48,7 +48,7 @@ class TicketData extends Component
             $this->name = $ticket->name;
             $this->price = priceFormat($ticket->price);
         }else{
-            return redirect()->to('/admin/ticket');
+            return redirect()->to('/admin/ticket/data');
         }
     }
 

@@ -90,8 +90,7 @@
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <h3>{{ priceFormat($transactionDetails->total) }}</h3>
-                <button type="button" class="btn btn-secondary"
-                    data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
             @endif
         </div>
@@ -118,7 +117,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($transactions != null)
+                    @if (count($transactions) > 0)
                     @foreach ($transactions as $tr)
                     <tr>
                         <td>{{ $tr->id }}</td>
@@ -136,6 +135,8 @@
                         </td>
                     </tr>
                     @endforeach
+                    @else
+                    <th colspan="5" class="text-center">Belum ada transaksi</th>
                     @endif
                 </tbody>
             </table>

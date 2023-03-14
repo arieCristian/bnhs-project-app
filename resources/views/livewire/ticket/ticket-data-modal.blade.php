@@ -55,8 +55,8 @@ aria-labelledby="updateTicketLabel" aria-hidden="true">
         <div class="modal-body">
             <form wire:submit.prevent="updateTicket">
                 <div class="form-group">
-                    <label for="name">Ticket Name</label>
-                    <input wire:model="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Enter ticket name" autofocus/>
+                    <label for="name">Nama Tiket</label>
+                    <input wire:model="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Masukan nama tiket" autofocus/>
                     @error('name')
                     <div class="invalid-feedback">
                     {{ $message }}
@@ -65,7 +65,7 @@ aria-labelledby="updateTicketLabel" aria-hidden="true">
                 </div>
                 <div class="form-group">
                     <label for="price">Harga Tiket</label>
-                    <input wire:model="price" type="text" class="form-control @error('price') is-invalid @enderror" id="price-update" placeholder="Enter ticket price"/>
+                    <input wire:model="price" type="text" class="form-control @error('price') is-invalid @enderror" id="price-update" placeholder="Masukan nama tiket"/>
                     @error('price')
                     <div class="invalid-feedback">
                     {{ $message }}

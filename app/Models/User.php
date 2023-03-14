@@ -44,7 +44,9 @@ class User extends Authenticatable
     public function ticketTransactions(){
         return $this->hasMany(TicketTransaction::class);
     }
-    public function cencelledTicket(){
-        return $this->hasMany(CencelledTicketTransaction::class);
+
+    public function lockerTransaction(){
+        return $this->hasMany(LockerTransaction::class);
     }
+
 }

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Http\Livewire\TicketTransaction;
+use App\Models\Locker;
 use App\Models\Role;
 use App\Models\Ticket;
 use App\Models\TicketTransaction as ModelsTicketTransaction;
@@ -81,6 +82,24 @@ class DatabaseSeeder extends Seeder
             'name' => 'Local Tourist Ticket' ,
             'price' => 50000
         ]);
+
+        Locker::create([
+            'name' => 'Loker Premium' ,
+            'price' => 30000
+        ]);
+        Locker::create([
+            'name' => 'Loker Biasa' ,
+            'price' => 15000
+        ]);
+        Locker::create([
+            'name' => 'Handuk Anak - Anak' ,
+            'price' => 10000
+        ]);
+        Locker::create([
+            'name' => 'Handuk Dewasa' ,
+            'price' => 20000
+        ]);
+
 
     }
 }

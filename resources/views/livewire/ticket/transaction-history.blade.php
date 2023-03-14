@@ -93,7 +93,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($transactions != null)
+                        @if (count($transactions) > 0)
                         @foreach ($transactions as $tr)
                         <tr>
                             <td>{{ $tr->id }}</td>
@@ -107,8 +107,6 @@
                                     data-toggle="modal" data-target="#info">
                                     <i class="fas fa-info-circle"></i>
                                 </button>
-                                {{--                             
-                                <a href="transaction/{{ $tr->id }}/edit" class="btn btn-warning">Edit</a> --}}
                                 @can('ticket')
                                 <button wire:click="cencel({{ $tr->id }})" type="button" class="btn btn-danger block">
                                     <i class="fas fa-trash"></i>
@@ -117,6 +115,13 @@
                             </td>
                         </tr>
                         @endforeach
+                        @else
+                            @canany(['admin', 'owner'])
+                            <th colspan="5" class="text-center">Belum ada transaksi</th>
+                            @endcanany
+                            @can('locker')
+                            <th colspan="4" class="text-center">Belum ada transaksi</th>
+                            @endcan
                         @endif
                     </tbody>
                 </table>

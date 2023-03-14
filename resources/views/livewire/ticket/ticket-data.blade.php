@@ -3,8 +3,8 @@
         @include('livewire.ticket.ticket-data-modal')
         <div class="card-header">
             <div class="d-flex justify-content-between">
-                <button data-toggle="modal" data-target="#addTicket" class="btn icon icon-left btn-primary rounded-pill">
-                <i class="bi bi-plus-lg"></i>
+                <button data-toggle="modal" data-target="#addTicket" class="btn btn-primary rounded-pill">
+                <i class="fas fa-plus" style="color: #FFF"></i>
                 Tambah Ticket</button>
             </div>
         </div>

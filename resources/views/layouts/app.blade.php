@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('title') &mdash; iMaiLE SHOP</title>
+    <title>@yield('title') &mdash; BNHS </title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
